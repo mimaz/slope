@@ -21,7 +21,7 @@
 #include <slope/item_p.h>
 #include <slope/scale_p.h>
 
-typedef struct _SlopeItemPrivate
+typedef struct
 {
   SlopeFigure *figure;
   SlopeScale * scale;
@@ -33,7 +33,7 @@ typedef struct _SlopeItemPrivate
 } SlopeItemPrivate;
 
 #define SLOPE_ITEM_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_ITEM_TYPE, SlopeItemPrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_ITEM, SlopeItemPrivate))
 
 G_DEFINE_TYPE_WITH_PRIVATE(SlopeItem, slope_item, G_TYPE_OBJECT)
 

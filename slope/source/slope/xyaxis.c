@@ -42,9 +42,9 @@ typedef struct _SlopeXyAxisPrivate
 } SlopeXyAxisPrivate;
 
 #define SLOPE_XYAXIS_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_XYAXIS_TYPE, SlopeXyAxisPrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_XYAXIS, SlopeXyAxisPrivate))
 
-G_DEFINE_TYPE_WITH_PRIVATE(SlopeXyAxis, slope_xyaxis, SLOPE_ITEM_TYPE)
+G_DEFINE_TYPE_WITH_PRIVATE(SlopeXyAxis, slope_xyaxis, SLOPE_TYPE_ITEM)
 
 static void _xyaxis_finalize(GObject *self);
 static void _xyaxis_get_figure_rect(SlopeItem *self, SlopeRect *rect);
@@ -93,7 +93,7 @@ static void _xyaxis_finalize(GObject *self)
 
 SlopeItem *slope_xyaxis_new(int orientation, const char *title)
 {
-  SlopeXyAxis *self = SLOPE_XYAXIS(g_object_new(SLOPE_XYAXIS_TYPE, NULL));
+  SlopeXyAxis *self = SLOPE_XYAXIS(g_object_new(SLOPE_TYPE_XYAXIS, NULL));
   SlopeXyAxisPrivate *priv = SLOPE_XYAXIS_GET_PRIVATE(self);
   priv->orientation        = orientation;
   slope_xyaxis_set_title(self, title);

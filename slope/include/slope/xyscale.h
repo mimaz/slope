@@ -24,61 +24,45 @@
 #include <slope/scale.h>
 #include <slope/xyaxis.h>
 
-#define SLOPE_XYSCALE_TYPE (slope_xyscale_get_type())
-#define SLOPE_XYSCALE(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_XYSCALE_TYPE, SlopeXyScale))
-#define SLOPE_XYSCALE_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_XYSCALE_TYPE, SlopeXyScaleClass))
-#define SLOPE_IS_XYSCALE(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_XYSCALE_TYPE))
-#define SLOPE_IS_XYSCALE_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_XYSCALE_TYPE))
-#define SLOPE_XYSCALE_GET_CLASS(obj) \
-  (SLOPE_XYSCALE_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef enum _SlopeXyScaleInteracion {
+#define SLOPE_TYPE_XYSCALE (slope_xyscale_get_type())
+
+typedef enum _SlopeXyScaleInteracion SlopeXyScaleInteracion;
+typedef enum _SlopeXyScaleAxis SlopeXyScaleAxis;
+typedef enum _SlopeXyScaleAxisFlag SlopeXyScaleAxisFlag;
+
+enum _SlopeXyScaleInteracion 
+{
   SLOPE_XYSCALE_INTERACTION_ZOOM      = 0,
   SLOPE_XYSCALE_INTERACTION_TRANSLATE = 1
-} SlopeXyScaleInteracion;
+};
 
-typedef enum _SlopeXyScaleAxis {
+enum _SlopeXyScaleAxis 
+{
   SLOPE_XYSCALE_AXIS_BOTTOM = 0,
   SLOPE_XYSCALE_AXIS_TOP    = 1,
   SLOPE_XYSCALE_AXIS_LEFT   = 2,
   SLOPE_XYSCALE_AXIS_RIGHT  = 3,
   SLOPE_XYSCALE_AXIS_X      = 4,
   SLOPE_XYSCALE_AXIS_Y      = 5
-} SlopeXyScaleAxis;
+};
 
-typedef enum _SlopeXyScaleAxisFlag {
+enum _SlopeXyScaleAxisFlag 
+{
   SLOPE_XYSCALE_NO_AXIS,
   SLOPE_XYSCALE_FRAME_AXIS,
   SLOPE_XYSCALE_FRAME_AXIS_GRID,
   SLOPE_XYSCALE_ZERO_AXIS,
   SLOPE_XYSCALE_FRAME_LINE
-} SlopeXyScaleAxisFlag;
+};
 
-typedef struct _SlopeXyScale
-{
-  SlopeScale parent;
-
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeXyScale;
-
-typedef struct _SlopeXyScaleClass
+struct _SlopeXyScaleClass
 {
   SlopeScaleClass parent_class;
+};
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeXyScaleClass;
-
-GType slope_xyscale_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeXyScale, slope_xyscale, SLOPE, XYSCALE, SlopeScale)
 
 SlopeScale *slope_xyscale_new(void);
 

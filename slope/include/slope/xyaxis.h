@@ -24,21 +24,14 @@
 #include <slope/item.h>
 #include <slope/sampler.h>
 
-#define SLOPE_XYAXIS_TYPE (slope_xyaxis_get_type())
-#define SLOPE_XYAXIS(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_XYAXIS_TYPE, SlopeXyAxis))
-#define SLOPE_XYAXIS_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_XYAXIS_TYPE, SlopeXyAxisClass))
-#define SLOPE_IS_XYAXIS(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_XYAXIS_TYPE))
-#define SLOPE_IS_XYAXIS_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_XYAXIS_TYPE))
-#define SLOPE_XYAXIS_GET_CLASS(obj) \
-  (SLOPE_XYAXIS_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef enum _SlopeXyAxisComponent {
+#define SLOPE_TYPE_XYAXIS (slope_xyaxis_get_type())
+
+typedef enum _SlopeXyAxisComponent SlopeXyAxisComponent;
+
+enum _SlopeXyAxisComponent 
+{
   SLOPE_XYAXIS_LINE          = 0x00000001,
   SLOPE_XYAXIS_TICKS_UP      = 0x00000002,
   SLOPE_XYAXIS_TICKS_DOWN    = 0x00000004,
@@ -55,19 +48,14 @@ typedef enum _SlopeXyAxisComponent {
   SLOPE_XYAXIS_DEFAULT_UP_GRID = SLOPE_XYAXIS_DEFAULT_UP | SLOPE_XYAXIS_GRID,
 
   SLOPE_XYAXIS_DEFAULT_DOWN_GRID = SLOPE_XYAXIS_DEFAULT_DOWN | SLOPE_XYAXIS_GRID
-} SlopeXyAxisComponent;
+};
 
-typedef struct _SlopeXyAxis
-{
-  SlopeItem parent;
-} SlopeXyAxis;
-
-typedef struct _SlopeXyAxisClass
+struct _SlopeXyAxisClass
 {
   SlopeItemClass parent_klass;
-} SlopeXyAxisClass;
+};
 
-GType slope_xyaxis_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeXyAxis, slope_xyaxis, SLOPE, XYAXIS, SlopeItem)
 
 SlopeItem *slope_xyaxis_new(int orientation, const char *title);
 

@@ -46,9 +46,9 @@ typedef struct _SlopeXyScalePrivate
 } SlopeXyScalePrivate;
 
 #define SLOPE_XYSCALE_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_XYSCALE_TYPE, SlopeXyScalePrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_XYSCALE, SlopeXyScalePrivate))
 
-G_DEFINE_TYPE_WITH_PRIVATE(SlopeXyScale, slope_xyscale, SLOPE_SCALE_TYPE)
+G_DEFINE_TYPE_WITH_PRIVATE(SlopeXyScale, slope_xyscale, SLOPE_TYPE_SCALE)
 
 static void _xyscale_finalize(GObject *self);
 static void _xyscale_draw(SlopeScale *self, const SlopeRect *rect, cairo_t *cr);
@@ -127,7 +127,7 @@ static void _xyscale_finalize(GObject *self)
 
 SlopeScale *slope_xyscale_new(void)
 {
-  SlopeXyScale *self = SLOPE_XYSCALE(g_object_new(SLOPE_XYSCALE_TYPE, NULL));
+  SlopeXyScale *self = SLOPE_XYSCALE(g_object_new(SLOPE_TYPE_XYSCALE, NULL));
   return SLOPE_SCALE(self);
 }
 
@@ -135,7 +135,7 @@ SlopeScale *slope_xyscale_new_axis(const char *x_title,
                                    const char *y_title,
                                    const char *top_title)
 {
-  SlopeXyScale *self = SLOPE_XYSCALE(g_object_new(SLOPE_XYSCALE_TYPE, NULL));
+  SlopeXyScale *self = SLOPE_XYSCALE(g_object_new(SLOPE_TYPE_XYSCALE, NULL));
   SlopeXyScalePrivate *priv = SLOPE_XYSCALE_GET_PRIVATE(self);
 
   slope_xyaxis_set_title(SLOPE_XYAXIS(priv->axis[SLOPE_XYSCALE_AXIS_BOTTOM]),

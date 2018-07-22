@@ -37,7 +37,7 @@ typedef struct _SlopeFigurePrivate
 } SlopeFigurePrivate;
 
 #define SLOPE_FIGURE_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_FIGURE_TYPE, SlopeFigurePrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_FIGURE, SlopeFigurePrivate))
 
 G_DEFINE_TYPE_WITH_PRIVATE(SlopeFigure, slope_figure, G_TYPE_OBJECT)
 
@@ -95,7 +95,7 @@ static void _figure_finalize(GObject *self)
 
 SlopeFigure *slope_figure_new()
 {
-  SlopeFigure *self = SLOPE_FIGURE(g_object_new(SLOPE_FIGURE_TYPE, NULL));
+  SlopeFigure *self = SLOPE_FIGURE(g_object_new(SLOPE_TYPE_FIGURE, NULL));
   return self;
 }
 

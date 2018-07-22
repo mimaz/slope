@@ -23,29 +23,11 @@
 
 #include <slope/legend.h>
 
-#define SLOPE_SCALE_TYPE (slope_scale_get_type())
-#define SLOPE_SCALE(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_SCALE_TYPE, SlopeScale))
-#define SLOPE_SCALE_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_SCALE_TYPE, SlopeScaleClass))
-#define SLOPE_IS_SCALE(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_SCALE_TYPE))
-#define SLOPE_IS_SCALE_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_SCALE_TYPE))
-#define SLOPE_SCALE_GET_CLASS(obj) (SLOPE_SCALE_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef struct _SlopeScale
-{
-  GObject parent;
+#define SLOPE_TYPE_SCALE (slope_scale_get_type())
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeScale;
-
-typedef struct _SlopeScaleClass
+struct _SlopeScaleClass
 {
   GObjectClass parent_class;
 
@@ -63,9 +45,9 @@ typedef struct _SlopeScaleClass
   /* Padding to allow adding up to 4 members
      without breaking ABI. */
   gpointer padding[4];
-} SlopeScaleClass;
+};
 
-GType slope_scale_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeScale, slope_scale, SLOPE, SCALE, GObject)
 
 void slope_scale_add_item(SlopeScale *self, SlopeItem *item);
 

@@ -28,7 +28,7 @@ typedef struct _SlopeViewPrivate
 } SlopeViewPrivate;
 
 #define SLOPE_VIEW_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_VIEW_TYPE, SlopeViewPrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_VIEW, SlopeViewPrivate))
 
 G_DEFINE_TYPE_WITH_PRIVATE(SlopeView, slope_view, GTK_TYPE_DRAWING_AREA)
 
@@ -91,13 +91,13 @@ static void _view_finalize(GObject *self)
 
 GtkWidget *slope_view_new()
 {
-  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_VIEW_TYPE, NULL));
+  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_TYPE_VIEW, NULL));
   return self;
 }
 
 GtkWidget *slope_view_new_with_figure(SlopeFigure *figure)
 {
-  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_VIEW_TYPE, NULL));
+  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_TYPE_VIEW, NULL));
   slope_view_set_figure(SLOPE_VIEW(self), figure);
   return self;
 }

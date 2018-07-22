@@ -28,7 +28,7 @@ typedef struct _SlopeChartPrivate
 } SlopeChartPrivate;
 
 #define SLOPE_CHART_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_CHART_TYPE, SlopeChartPrivate))
+  G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_CHART, SlopeChartPrivate)
 
 G_DEFINE_TYPE_WITH_PRIVATE(SlopeChart, slope_chart, GTK_TYPE_WINDOW)
 
@@ -59,19 +59,18 @@ static void slope_chart_init(SlopeChart *self)
 
 static void _chart_finalize(GObject *self)
 {
-  /* SlopeChartPrivate *priv = SLOPE_CHART_GET_PRIVATE(self); */
   G_OBJECT_CLASS(slope_chart_parent_class)->finalize(self);
 }
 
 GtkWidget *slope_chart_new()
 {
-  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_CHART_TYPE, NULL));
+  GtkWidget *self = GTK_WIDGET(g_object_new(SLOPE_TYPE_CHART, NULL));
   return self;
 }
 
 GtkWidget *slope_chart_new_detailed(const gchar *title, int width, int height)
 {
-  GtkWidget *        self = GTK_WIDGET(g_object_new(SLOPE_CHART_TYPE, NULL));
+  GtkWidget *        self = GTK_WIDGET(g_object_new(SLOPE_TYPE_CHART, NULL));
   SlopeChartPrivate *priv = SLOPE_CHART_GET_PRIVATE(self);
   gtk_window_set_default_size(GTK_WINDOW(self), width, height);
   gtk_header_bar_set_title(GTK_HEADER_BAR(priv->header), title);

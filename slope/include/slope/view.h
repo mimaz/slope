@@ -24,28 +24,11 @@
 #include <gtk/gtk.h>
 #include <slope/figure.h>
 
-#define SLOPE_VIEW_TYPE (slope_view_get_type())
-#define SLOPE_VIEW(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_VIEW_TYPE, SlopeView))
-#define SLOPE_VIEW_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_VIEW_TYPE, SlopeViewClass))
-#define SLOPE_IS_VIEW(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_VIEW_TYPE))
-#define SLOPE_IS_VIEW_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_VIEW_TYPE))
-#define SLOPE_VIEW_GET_CLASS(obj) (SLOPE_VIEW_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-struct _SlopeView
-{
-  GtkDrawingArea parent;
+#define SLOPE_TYPE_VIEW (slope_view_get_type())
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-};
-
-typedef struct _SlopeViewClass
+struct _SlopeViewClass
 {
   GtkDrawingAreaClass parent_class;
 
@@ -54,9 +37,9 @@ typedef struct _SlopeViewClass
   /* Padding to allow adding up to 4 members
      without breaking ABI. */
   gpointer padding[4];
-} SlopeViewClass;
+};
 
-GType slope_view_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeView, slope_view, SLOPE, VIEW, GtkDrawingArea)
 
 GtkWidget *slope_view_new(void);
 

@@ -52,9 +52,9 @@ static void _xyseries_draw_areaunder(SlopeXySeries *self, cairo_t *cr);
 
 #define SLOPE_XYSERIES_GET_PRIVATE(obj) \
   (G_TYPE_INSTANCE_GET_PRIVATE(         \
-      (obj), SLOPE_XYSERIES_TYPE, SlopeXySeriesPrivate))
+      (obj), SLOPE_TYPE_XYSERIES, SlopeXySeriesPrivate))
 
-G_DEFINE_TYPE_WITH_PRIVATE(SlopeXySeries, slope_xyseries, SLOPE_ITEM_TYPE)
+G_DEFINE_TYPE_WITH_PRIVATE(SlopeXySeries, slope_xyseries, SLOPE_TYPE_ITEM)
 
 static void slope_xyseries_class_init(SlopeXySeriesClass *klass)
 {
@@ -90,7 +90,7 @@ void _xyseries_finalize(GObject *self)
 
 SlopeItem *slope_xyseries_new(void)
 {
-  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_XYSERIES_TYPE, NULL));
+  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_TYPE_XYSERIES, NULL));
   return self;
 }
 
@@ -100,7 +100,7 @@ SlopeItem *slope_xyseries_new_filled(const char *  name,
                                      long          n_pts,
                                      const char *  style)
 {
-  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_XYSERIES_TYPE, NULL));
+  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_TYPE_XYSERIES, NULL));
   slope_item_set_name(self, name);
   slope_xyseries_update_data(SLOPE_XYSERIES(self), x_vec, y_vec, n_pts);
   slope_xyseries_set_style(SLOPE_XYSERIES(self), style);

@@ -41,9 +41,9 @@ typedef struct _SlopeLegendPrivate
 } SlopeLegendPrivate;
 
 #define SLOPE_LEGEND_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_LEGEND_TYPE, SlopeLegendPrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_LEGEND, SlopeLegendPrivate))
 
-G_DEFINE_TYPE_WITH_PRIVATE(SlopeLegend, slope_legend, SLOPE_ITEM_TYPE)
+G_DEFINE_TYPE_WITH_PRIVATE(SlopeLegend, slope_legend, SLOPE_TYPE_ITEM)
 
 #define LEGEND_THUMB_WIDTH 40.0
 #define LEGEND_PADDING 10.0
@@ -93,7 +93,7 @@ static void _legend_finalize(GObject *self)
 
 SlopeItem *slope_legend_new(SlopeOrientation orientation)
 {
-  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_LEGEND_TYPE, NULL));
+  SlopeItem *self = SLOPE_ITEM(g_object_new(SLOPE_TYPE_LEGEND, NULL));
   slope_legend_set_orientation(SLOPE_LEGEND(self), orientation);
   return self;
 }

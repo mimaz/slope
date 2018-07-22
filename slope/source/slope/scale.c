@@ -38,7 +38,7 @@ typedef struct _SlopeScalePrivate
 } SlopeScalePrivate;
 
 #define SLOPE_SCALE_GET_PRIVATE(obj) \
-  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_SCALE_TYPE, SlopeScalePrivate))
+  (G_TYPE_INSTANCE_GET_PRIVATE((obj), SLOPE_TYPE_SCALE, SlopeScalePrivate))
 
 G_DEFINE_TYPE_WITH_PRIVATE(SlopeScale, slope_scale, G_TYPE_OBJECT)
 

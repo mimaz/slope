@@ -23,38 +23,16 @@
 
 #include <slope/view.h>
 
-#define SLOPE_CHART_TYPE (slope_chart_get_type())
-#define SLOPE_CHART(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_CHART_TYPE, SlopeChart))
-#define SLOPE_CHART_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_CHART_TYPE, SlopeChartClass))
-#define SLOPE_IS_CHART(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_CHART_TYPE))
-#define SLOPE_IS_CHART_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_CHART_TYPE))
-#define SLOPE_CHART_GET_CLASS(obj) (SLOPE_CHART_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef struct _SlopeChart
-{
-  GtkWindow parent;
+#define SLOPE_TYPE_CHART (slope_chart_get_type())
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeChart;
-
-typedef struct _SlopeChartClass
+struct _SlopeChartClass
 {
   GtkWindowClass parent_class;
+};
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeChartClass;
-
-GType slope_chart_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeChart, slope_chart, SLOPE, CHART, GtkWindow)
 
 GtkWidget *slope_chart_new();
 

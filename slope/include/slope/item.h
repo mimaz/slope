@@ -24,28 +24,11 @@
 #include <glib-object.h>
 #include <slope/drawing.h>
 
-#define SLOPE_ITEM_TYPE (slope_item_get_type())
-#define SLOPE_ITEM(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_ITEM_TYPE, SlopeItem))
-#define SLOPE_ITEM_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_ITEM_TYPE, SlopeItemClass))
-#define SLOPE_IS_ITEM(obj) (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_ITEM_TYPE))
-#define SLOPE_IS_ITEM_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_ITEM_TYPE))
-#define SLOPE_ITEM_GET_CLASS(obj) (SLOPE_ITEM_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef struct _SlopeItem
-{
-  GObject parent;
+#define SLOPE_TYPE_ITEM (slope_item_get_type())
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeItem;
-
-typedef struct _SlopeItemClass
+struct _SlopeItemClass
 {
   GObjectClass parent_class;
 
@@ -54,13 +37,9 @@ typedef struct _SlopeItemClass
   void (*get_figure_rect)(SlopeItem *self, SlopeRect *rect);
   void (*get_data_rect)(SlopeItem *self, SlopeRect *rect);
   void (*mouse_event)(SlopeItem *self, SlopeMouseEvent *event);
+};
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeItemClass;
-
-GType slope_item_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeItem, slope_item, SLOPE, ITEM, GObject)
 
 void slope_item_get_figure_rect(SlopeItem *self, SlopeRect *rect);
 

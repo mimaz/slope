@@ -23,21 +23,14 @@
 
 #include <slope/item.h>
 
-#define SLOPE_LEGEND_TYPE (slope_legend_get_type())
-#define SLOPE_LEGEND(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST((obj), SLOPE_LEGEND_TYPE, SlopeLegend))
-#define SLOPE_LEGEND_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_CAST((klass), SLOPE_LEGEND_TYPE, SlopeLegendClass))
-#define SLOPE_IS_LEGEND(obj) \
-  (G_TYPE_CHECK_INSTANCE_TYPE((obj), SLOPE_LEGEND_TYPE))
-#define SLOPE_IS_LEGEND_CLASS(klass) \
-  (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_LEGEND_TYPE))
-#define SLOPE_LEGEND_GET_CLASS(obj) \
-  (SLOPE_LEGEND_CLASS(G_OBJECT_GET_CLASS(obj)))
-
 G_BEGIN_DECLS
 
-typedef enum _SlopeLegendPosition {
+#define SLOPE_TYPE_LEGEND (slope_legend_get_type())
+
+typedef enum _SlopeLegendPosition SlopeLegendPosition;
+
+enum _SlopeLegendPosition 
+{
   SLOPE_LEGEND_CUSTOM,
   SLOPE_LEGEND_TOP,
   SLOPE_LEGEND_BOTTOM,
@@ -47,27 +40,14 @@ typedef enum _SlopeLegendPosition {
   SLOPE_LEGEND_TOPRIGHT,
   SLOPE_LEGEND_BOTTOMLEFT,
   SLOPE_LEGEND_BOTTOMRIGHT
-} SlopeLegendPosition;
+};
 
-typedef struct _SlopeLegend
-{
-  SlopeItem parent;
-
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeLegend;
-
-typedef struct _SlopeLegendClass
+struct _SlopeLegendClass
 {
   SlopeItemClass parent_class;
+};
 
-  /* Padding to allow adding up to 4 members
-     without breaking ABI. */
-  gpointer padding[4];
-} SlopeLegendClass;
-
-GType slope_legend_get_type(void) G_GNUC_CONST;
+G_DECLARE_DERIVABLE_TYPE(SlopeLegend, slope_legend, SLOPE, LEGEND, SlopeItem)
 
 SlopeItem *slope_legend_new(SlopeOrientation orientation);
 
