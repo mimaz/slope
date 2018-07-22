@@ -34,7 +34,7 @@
   (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_ITEM_TYPE))
 #define SLOPE_ITEM_GET_CLASS(obj) (SLOPE_ITEM_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef struct _SlopeItem
 {
@@ -92,6 +92,6 @@ void slope_item_set_name(SlopeItem *self, const char *name);
 
 void slope_item_detach(SlopeItem *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_ITEM_H */

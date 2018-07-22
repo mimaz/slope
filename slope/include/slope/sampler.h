@@ -25,7 +25,7 @@
 
 #define SLOPE_XYAXIS_SAMPLE(ptr) ((SlopeSample *) (ptr))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeSamplerMode {
   SLOPE_SAMPLER_MANUAL,
@@ -65,6 +65,6 @@ extern const SlopeSample *const slope_sampler_pi_samples;
 
 extern const SlopeSample *const slope_sampler_month_samples;
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_SAMPLER_H */

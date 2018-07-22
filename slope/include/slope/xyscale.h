@@ -36,7 +36,7 @@
 #define SLOPE_XYSCALE_GET_CLASS(obj) \
   (SLOPE_XYSCALE_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeXyScaleInteracion {
   SLOPE_XYSCALE_INTERACTION_ZOOM      = 0,
@@ -96,6 +96,6 @@ void slope_xyscale_set_y_range(SlopeXyScale *self, double min, double max);
 
 void slope_xyscale_set_interaction(SlopeXyScale *self, int interaction);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_XYSCALE_H */

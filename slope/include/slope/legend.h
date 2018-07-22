@@ -35,7 +35,7 @@
 #define SLOPE_LEGEND_GET_CLASS(obj) \
   (SLOPE_LEGEND_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeLegendPosition {
   SLOPE_LEGEND_CUSTOM,
@@ -103,6 +103,6 @@ void slope_legend_add_item(SlopeLegend *self, SlopeItem *item);
 
 void slope_legend_clear_items(SlopeLegend *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_LEGEND_H */

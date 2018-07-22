@@ -34,7 +34,7 @@
   (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_VIEW_TYPE))
 #define SLOPE_VIEW_GET_CLASS(obj) (SLOPE_VIEW_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 struct _SlopeView
 {
@@ -73,6 +73,6 @@ void slope_view_write_to_png(SlopeView * self,
                              int         width,
                              int         height);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_VIEW_H */

@@ -35,7 +35,7 @@
 #define SLOPE_XYSERIES_GET_CLASS(obj) \
   (SLOPE_XYSERIES_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeXySeriesMode {
   SLOPE_SERIES_LINE       = 0x00000001,
@@ -89,6 +89,6 @@ void slope_xyseries_set_style(SlopeXySeries *self, const char *style);
 
 void slope_xyseries_update(SlopeXySeries *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_XYSERIES_H */

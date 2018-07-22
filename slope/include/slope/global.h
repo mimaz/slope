@@ -21,13 +21,7 @@
 #ifndef SLOPE_GLOBAL_H
 #define SLOPE_GLOBAL_H
 
-#ifdef __cplusplus
-#define SLOPE_BEGIN_DECLS extern "C" {
-#define SLOPE_END_DECLS } /* extern "C" */
-#else
-#define SLOPE_BEGIN_DECLS /* nothing */
-#define SLOPE_END_DECLS   /* nothing */
-#endif
+#include <glib/gmacros.h>
 
 typedef struct _SlopeFigure SlopeFigure;
 typedef struct _SlopeScale  SlopeScale;
@@ -56,6 +50,6 @@ typedef struct _SlopeMouseEvent
   SlopeMouseEventType type;
 } SlopeMouseEvent;
 
-#define SLOPE_UNUSED(var) (void) var
+#define SLOPE_UNUSED(x) (void)(x)
 
 #endif /* SLOPE_GLOBAL_H */

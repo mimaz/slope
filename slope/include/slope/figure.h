@@ -36,7 +36,7 @@
 #define SLOPE_FIGURE_GET_CLASS(obj) \
   (SLOPE_FIGURE_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeFigureFrameMode {
   SLOPE_FIGURE_RECTANGLE,
@@ -91,6 +91,6 @@ SlopeView *slope_figure_get_view(SlopeFigure *self);
 
 SlopeItem *slope_figure_get_legend(SlopeFigure *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_FIGURE_H */

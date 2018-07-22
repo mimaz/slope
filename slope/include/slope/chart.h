@@ -34,7 +34,7 @@
   (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_CHART_TYPE))
 #define SLOPE_CHART_GET_CLASS(obj) (SLOPE_CHART_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef struct _SlopeChart
 {
@@ -75,6 +75,6 @@ void slope_chart_write_to_png(SlopeChart *self,
                               int         width,
                               int         height);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_CHART_H */

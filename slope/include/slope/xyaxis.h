@@ -36,7 +36,7 @@
 #define SLOPE_XYAXIS_GET_CLASS(obj) \
   (SLOPE_XYAXIS_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef enum _SlopeXyAxisComponent {
   SLOPE_XYAXIS_LINE          = 0x00000001,
@@ -104,6 +104,6 @@ void slope_xyaxis_set_selection_color(SlopeXyAxis *self, SlopeColor color);
 
 SlopeColor slope_xyaxis_get_selection_color(SlopeXyAxis *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_XYAXIS_H */

@@ -34,7 +34,7 @@
   (G_TYPE_CHECK_CLASS_TYPE((klass), SLOPE_SCALE_TYPE))
 #define SLOPE_SCALE_GET_CLASS(obj) (SLOPE_SCALE_CLASS(G_OBJECT_GET_CLASS(obj)))
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef struct _SlopeScale
 {
@@ -124,6 +124,6 @@ void slope_scale_detach(SlopeScale *self);
 
 gboolean slope_scale_get_show_name(SlopeScale *self);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_SCALE_H */

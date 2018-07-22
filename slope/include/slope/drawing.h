@@ -25,7 +25,7 @@
 #include <glib.h>
 #include <slope/global.h>
 
-SLOPE_BEGIN_DECLS
+G_BEGIN_DECLS
 
 typedef guint32 SlopeColor;
 #define SLOPE_WHITE 0xFFFFFFFF
@@ -131,6 +131,6 @@ void slope_cairo_circle(cairo_t *cr, const SlopePoint *center, double radius);
 
 SlopeColor slope_color_parse(char c);
 
-SLOPE_END_DECLS
+G_END_DECLS
 
 #endif /* SLOPE_DRAWING_H */
